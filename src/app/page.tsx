@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { userData } from '@/config/users';
 
@@ -46,16 +45,14 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#111] text-white">
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#ff66cc]/20 via-[#aa66ff]/20 to-[#ff66cc]/20 animate-gradient" />
-        </div>
+        <div className="absolute inset-0 z-0 bg-gradient-animate opacity-20" />
         
         <div className="relative z-10 text-center px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#ff66cc] to-[#aa66ff]"
+            className="text-6xl font-bold mb-6 text-gradient"
           >
             Solana PnL Tracker
           </motion.h1>
@@ -79,7 +76,7 @@ export default function HomePage() {
               <Link 
                 key={username}
                 href={`/${username}`}
-                className="px-6 py-3 rounded-lg bg-gradient-to-r from-[#ff66cc] to-[#aa66ff] hover:opacity-90 transition-opacity font-medium"
+                className="gradient-button"
               >
                 Track {username}
               </Link>
@@ -101,7 +98,7 @@ export default function HomePage() {
 
       {/* Features Section */}
       <div className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center mb-16">Advanced Features</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-gradient">Advanced Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <motion.div
@@ -109,7 +106,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="p-6 rounded-2xl bg-[#222] hover:bg-[#333] transition-colors"
+              className="feature-card"
             >
               <div className="text-4xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
@@ -131,7 +128,7 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#222] hover:bg-[#333] transition-colors"
+                  className="social-link"
                 >
                   <span>{social.icon}</span>
                   <span>{social.name}</span>
