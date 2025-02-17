@@ -3,19 +3,20 @@ import SolanaTracker from '@/components/SolanaTracker';
 import { userData } from '@/config/users';
 
 interface Props {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 }
 
-export default function UserPage({ params: { username } }: Props) {
+export default async function UserPage({ params }: Props) {
+  const { username } = await params;
   const user = userData[username];
 
   if (!user) {
     notFound();
   }
 
-  return <SolanaTracker username={username} initialData={user} />;
+  return <SolanaTracker initialData={user} />;
 }
 
 export function generateStaticParams() {

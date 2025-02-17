@@ -6,11 +6,10 @@ import { fetchBalance } from '../utils/solana';
 import Image from 'next/image';
 
 interface Props {
-  username: string;
   initialData: UserData;
 }
 
-export default function SolanaTracker({ username, initialData }: Props) {
+export default function SolanaTracker({ initialData }: Props) {
   const [data, setData] = useState<UserData>(initialData);
 
   useEffect(() => {
